@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.webpt.step.definition.AppTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.235 s - in com.webpt.step.definition.AppTest
