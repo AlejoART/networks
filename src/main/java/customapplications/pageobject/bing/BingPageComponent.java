@@ -16,7 +16,7 @@ import com.webpt.managers.WebptConfigurationManager;
 public class BingPageComponent extends LoadableComponent<BingPageComponent> {
 	private WebDriver driver = WebptATFHandler.getInstance().getWebAutomation().getWebDriver();
 	private final String BINGSEARCHFIELD_CLASS = "b_searchbox";
-	private final String BINGSEARCHBTN_CLASS = "b_searchboxSubmit";
+	private final String BINGSEARCHBTN_CLASS = "b_searchboxSubmit22323";
 	private final String BINGMAPSTAB_CSS = "#b_results li:nth-of-type(" + 1 + ") a";
 	private final String MAPSSEARCH_ID = "maps_sb";
 

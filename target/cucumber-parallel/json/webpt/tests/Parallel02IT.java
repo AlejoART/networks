@@ -16,7 +16,7 @@ import java.util.*;
 
 @CucumberOptions(
     strict = true,
-    features = {"/Users/sayed.maudoudi/Desktop/cucumber-base/src/test/resources/features/google/google.feature"},
+    features = {"/Users/sayed.maudoudi/Desktop/webpt-cucumber-starter/src/test/resources/features/google/google.feature"},
       plugin = {"json:target/output/json/2.json", "pretty" },
       format = {"json:target/output/json/2.json", "pretty:STDOUT", "html:target/site/cucumber-pretty"}, 
      //tags = { "~@ignore"  }, 

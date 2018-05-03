@@ -427,26 +427,29 @@
 	</build>
 	<distributionManagement>
 		<!-- mvn deploy -->
-		<repository>
-			<uniqueVersion>false</uniqueVersion>
-			<id>${com.webpt.nexus.id}</id>
-			<name>WebPT Releases</name>
-			<url>https://nexus.wptdev.com/nexus/content/repositories/releases</url>
-			<layout>default</layout>
-		</repository>
-		<snapshotRepository>
-			<uniqueVersion>true</uniqueVersion>
-			<id>${com.webpt.nexus.id}</id>
-			<name>WebPT Snapshots</name>
-			<url>https://nexus.wptdev.com/nexus/content/repositories/snapshots</url>
-			<layout>default</layout>
-		</snapshotRepository>
 
+		<repository>
+			<id>nexus</id>
+			<name>Releases</name>
+			<url>http://localhost:9091/repository/maven-releases</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Snapshot</name>
+			<url>http://localhost:9091/repository/maven-snapshots</url>
+		</snapshotRepository>
+		<site>
+			<id>nexus</id>
+			<name>Nexus Sites</name>
+			<url>dav:http://localhost:9091/nexus/content/sites/site/</url>
+		</site>
+	</distributionManagement>
 		<!-- <repository> <id>nexus</id> <name>Releases</name> <url>http://localhost:9091/repository/maven-releases</url> 
 			</repository> <snapshotRepository> <id>nexus</id> <name>Snapshot</name> <url>http://localhost:9091/repository/maven-snapshots</url> 
 			</snapshotRepository> <site> <id>nexus</id> <name>Nexus Sites</name> <url>dav:http://localhost:9091/nexus/content/sites/site/</url> 
 			</site> -->
-	</distributionManagement>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<testng.version>6.14.2</testng.version>
