@@ -419,25 +419,20 @@
 		</plugins>
 	</build>
 	<distributionManagement>
-
 		<!-- mvn deploy -->
 
 		<repository>
-			<id>nexus</id>
-			<name>Releases</name>
-			<url>http://localhost:9091/repository/maven-releases</url>
+			<id>com.wptdev.nexus.releases</id>
+			<name>WebPT Releases</name>
+			<url>https://nexus.wptdev.com/nexus/content/repositories/releases</url>
 		</repository>
 
 		<snapshotRepository>
-			<id>nexus</id>
-			<name>Snapshot</name>
-			<url>http://localhost:9091/repository/maven-snapshots</url>
+			<id>com.wptdev.nexus.snapshots</id>
+			<name>WebPT Snapshots</name>
+			<url>https://nexus.wptdev.com/nexus/content/repositories/snapshots</url>
+
 		</snapshotRepository>
-		<site>
-			<id>nexus</id>
-			<name>Nexus Sites</name>
-			<url>dav:http://localhost:9091/nexus/content/sites/site/</url>
-		</site>
 
 	</distributionManagement>
 	<!-- <repository> <id>nexus</id> <name>Releases</name> <url>http://localhost:9091/repository/maven-releases</url> 
