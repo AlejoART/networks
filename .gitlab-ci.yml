@@ -1,24 +1,24 @@
-stages:
-  - test
-  - snapshot
-  - release
-mvn:install:
-  image: maven:latest
-  stage: test
-  script:
-    - mvn -B install -DskipTests
-mvn:deploy:
-  image: maven:latest
-  stage: snapshot
-  script:
-    - mvn -B deploy -DskipTests
-  only:
-    - master
-mvn:deploy-tag:
-  image: maven:latest
-  stage: release
-  script:
-    - mvn -B versions:set -DgenerateBackupPoms=false -DnewVersion=$CI_BUILD_TAG -DskipTests
-    - mvn -B deploy -DskipTests
-  only:
-    - tags
+#stages:
+#  - test
+#  - snapshot
+#  - release
+#mvn:install:
+#  image: maven:latest
+#  stage: test
+#  script:
+#    - mvn -B install -DskipTests
+#mvn:deploy:
+#  image: maven:latest
+#  stage: snapshot
+#  script:
+#    - mvn -B deploy -DskipTests
+#  only:
+#    - master
+#mvn:deploy-tag:
+#  image: maven:latest
+#  stage: release
+#  script:
+#    - mvn -B versions:set -DgenerateBackupPoms=false -DnewVersion=$CI_BUILD_TAG -DskipTests
+#    - mvn -B deploy -DskipTests
+#  only:
+#    - tags

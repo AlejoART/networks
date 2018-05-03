@@ -113,11 +113,6 @@
 			<version>1.4</version>
 		</dependency>
 		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.0.13</version>
-		</dependency>
-		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.187</version>
@@ -379,7 +374,7 @@
 					</execution>
 				</executions>
 			</plugin>
-<plugin>
+			<plugin>
 									<groupId>net.masterthought</groupId>
 									<artifactId>maven-cucumber-reporting</artifactId>
 									<version>3.11.0</version>
