@@ -186,12 +186,8 @@
 			<artifactId>logback-core</artifactId>
 			<version>1.2.3</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.2.3</version>
-			<scope>test</scope>
-		</dependency> -->
+		<!-- <dependency> <groupId>ch.qos.logback</groupId> <artifactId>logback-classic</artifactId> 
+			<version>1.2.3</version> <scope>test</scope> </dependency> -->
 		<!-- <dependency> <groupId>net.masterthought</groupId> <artifactId>cucumber-reporting</artifactId> 
 			<version>3.9.0</version> </dependency> -->
 
@@ -205,17 +201,14 @@
 			<artifactId>cucumber-runner</artifactId>
 			<version>1.0.8</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>net.masterthought.jenkins</groupId>
-			<artifactId>cucumber-reports</artifactId>
-			<version>0.0.21</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>net.masterthought.jenkins</groupId> <artifactId>cucumber-reports</artifactId> 
+			<version>0.0.21</version> </dependency> -->
 		<dependency>
 			<groupId>net.masterthought</groupId>
 			<artifactId>maven-cucumber-reporting</artifactId>
 			<version>3.16.0</version>
 		</dependency>
-		<!--  <dependency> <groupId>org.jenkins-ci.plugins</groupId> <artifactId>git</artifactId> 
+		<!-- <dependency> <groupId>org.jenkins-ci.plugins</groupId> <artifactId>git</artifactId> 
 			<version>2.5.0</version> </dependency> -->
 	</dependencies>
 	<build>
@@ -318,9 +311,9 @@
 							<!-- Directory where the cucumber report files shall be written -->
 							<cucumberOutputDir>target/output/json</cucumberOutputDir>
 							<!-- comma separated list of output formats -->
-							
-								
-							
+
+
+
 							<format>json</format>
 							<!-- CucumberOptions.strict property -->
 							<strict>true</strict>
@@ -350,7 +343,7 @@
 							<!-- Specify a custom package name for generated sources. Default 
 								is no package. -->
 							<packageName>webpt.tests</packageName>
-							
+
 						</configuration>
 					</execution>
 				</executions>
@@ -379,33 +372,33 @@
 					</execution>
 				</executions>
 			</plugin>
-<plugin>
-									<groupId>net.masterthought</groupId>
-									<artifactId>maven-cucumber-reporting</artifactId>
-									<version>3.11.0</version>
-									<executions>
-										<execution>
-											<id>execution</id>
-											<phase>verify</phase>
-											<goals>
-												<goal>generate</goal>
-											</goals>
-											<configuration>
-												<projectName>cucumber-testNG-starter</projectName>
-												<outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>
-												<cucumberOutput>${project.build.directory}/output/json/1.json</cucumberOutput>
+			<!-- <plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>3.11.0</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>cucumber-testNG-starter</projectName>
+							<outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>
+							<cucumberOutput>${project.build.directory}/output/json/1.json</cucumberOutput>
 
-												<parallelTesting>true</parallelTesting>
+							<parallelTesting>true</parallelTesting>
 
-												<checkBuildResult>true</checkBuildResult>
-												<skippedFails>false</skippedFails>
-												<enableFlashCharts>false</enableFlashCharts>
-												<buildNumber>1</buildNumber>
+							<checkBuildResult>true</checkBuildResult>
+							<skippedFails>false</skippedFails>
+							<enableFlashCharts>false</enableFlashCharts>
+							<buildNumber>1</buildNumber>
 
-											</configuration>
-										</execution>
-									</executions>
-								</plugin>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin> -->
 			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>site-maven-plugin</artifactId>
@@ -429,24 +422,24 @@
 		<!-- mvn deploy -->
 
 		<repository>
-            <id>com.wptdev.nexus.releases</id>
-            <name>WebPT Releases</name>
-            <url>https://nexus.wptdev.com/nexus/content/repositories/releases</url>
-        </repository>
+			<id>com.wptdev.nexus.releases</id>
+			<name>WebPT Releases</name>
+			<url>https://nexus.wptdev.com/nexus/content/repositories/releases</url>
+		</repository>
 
 		<snapshotRepository>
-			 <id>com.wptdev.nexus.snapshots</id>
-            <name>WebPT Snapshots</name>
-            <url>https://nexus.wptdev.com/nexus/content/repositories/snapshots</url>
-			
+			<id>com.wptdev.nexus.snapshots</id>
+			<name>WebPT Snapshots</name>
+			<url>https://nexus.wptdev.com/nexus/content/repositories/snapshots</url>
+
 		</snapshotRepository>
-		
+
 	</distributionManagement>
-		<!-- <repository> <id>nexus</id> <name>Releases</name> <url>http://localhost:9091/repository/maven-releases</url> 
-			</repository> <snapshotRepository> <id>nexus</id> <name>Snapshot</name> <url>http://localhost:9091/repository/maven-snapshots</url> 
-			</snapshotRepository> <site> <id>nexus</id> <name>Nexus Sites</name> <url>dav:http://localhost:9091/nexus/content/sites/site/</url> 
-			</site> -->
-	
+	<!-- <repository> <id>nexus</id> <name>Releases</name> <url>http://localhost:9091/repository/maven-releases</url> 
+		</repository> <snapshotRepository> <id>nexus</id> <name>Snapshot</name> <url>http://localhost:9091/repository/maven-snapshots</url> 
+		</snapshotRepository> <site> <id>nexus</id> <name>Nexus Sites</name> <url>dav:http://localhost:9091/nexus/content/sites/site/</url> 
+		</site> -->
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<testng.version>6.14.2</testng.version>
