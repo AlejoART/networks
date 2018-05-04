@@ -19,7 +19,7 @@ public class GooglePageComponent extends LoadableComponent<GooglePageComponent> 
 	
 	private WebDriver driver = WebptATFHandler.getInstance().getWebAutomation().getWebDriver();
 	private final String GOOGLESEARCHFIELD_ID = "lst-ib";
-	private final String GOOGLESEARCHBTN_CSS = ".jsb input[name='btnK']";
+	private final String GOOGLESEARCHBTN_CSS = ".jsb input[name='btnK']445455";
 	private final String GOOGLEMAPSTAB_CSS = "#rso a:nth-of-type(" + 1 + ")";
 	private final String SEARCHGOOGLEMAPS_ID = "searchboxinput";
 	@Override
