@@ -1,1 +1,9 @@
-/target/
+target/
+test-output/
+screenshot
+
+*.iml
+.idea
+.project
+.setting
+.DS_Store
