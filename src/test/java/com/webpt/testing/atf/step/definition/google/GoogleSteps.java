@@ -1,8 +1,9 @@
-package com.webpt.step.definition.google;
+package com.webpt.testing.atf.step.definition.google;
+
+import com.webpt.testing.atf.page.PageComponentFactory;
+import com.webpt.testing.atf.pageobject.google.GooglePageComponent;
 
 import cucumber.api.java.en.*;
-import customapplications.PageComponentFactory;
-import customapplications.pageobject.google.GooglePageComponent;
 
 public class GoogleSteps {
 	private GooglePageComponent googleSearch = (GooglePageComponent) 

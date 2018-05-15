@@ -1,11 +1,12 @@
-package com.webpt;
+package com.webpt.testing.atf;
 
 import net.jsourcerer.webdriver.jserrorcollector.JavaScriptError;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.webpt.managers.*;
+//import com.webpt.testing.atf.managers.*;
+import com.webpt.testing.atf.managers.*;
 
 import java.util.List;
 

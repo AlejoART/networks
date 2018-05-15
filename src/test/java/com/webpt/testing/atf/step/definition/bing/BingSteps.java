@@ -1,8 +1,9 @@
-package com.webpt.step.definition.google;
+package com.webpt.testing.atf.step.definition.bing;
+
+import com.webpt.testing.atf.page.PageComponentFactory;
+import com.webpt.testing.atf.pageobject.bing.BingPageComponent;
 
 import cucumber.api.java.en.*;
-import customapplications.PageComponentFactory;
-import customapplications.pageobject.bing.BingPageComponent;
 
 public class BingSteps {
 	

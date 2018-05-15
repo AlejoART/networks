@@ -1,4 +1,4 @@
-package com.webpt.managers;
+package com.webpt.testing.atf.managers;
 
 import java.net.MalformedURLException;
 import java.net.URL;

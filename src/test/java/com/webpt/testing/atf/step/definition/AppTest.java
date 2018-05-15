@@ -1,4 +1,4 @@
-package com.webpt.step.definition;
+package com.webpt.testing.atf.step.definition;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

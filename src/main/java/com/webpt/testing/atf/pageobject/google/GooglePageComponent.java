@@ -1,4 +1,4 @@
-package customapplications.pageobject.google;
+package com.webpt.testing.atf.pageobject.google;
 
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -10,8 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
-import com.webpt.WebptATFHandler;
-import com.webpt.managers.WebptConfigurationManager;
+import com.webpt.testing.atf.WebptATFHandler;
+import com.webpt.testing.atf.managers.WebptConfigurationManager;
 
 
 
@@ -19,7 +19,7 @@ public class GooglePageComponent extends LoadableComponent<GooglePageComponent> 
 	
 	private WebDriver driver = WebptATFHandler.getInstance().getWebAutomation().getWebDriver();
 	private final String GOOGLESEARCHFIELD_ID = "lst-ib";
-	private final String GOOGLESEARCHBTN_CSS = ".jsb input[name='btnK']445455";
+	private final String GOOGLESEARCHBTN_CSS = ".jsb input[name='btnK']";
 	private final String GOOGLEMAPSTAB_CSS = "#rso a:nth-of-type(" + 1 + ")";
 	private final String SEARCHGOOGLEMAPS_ID = "searchboxinput";
 	@Override

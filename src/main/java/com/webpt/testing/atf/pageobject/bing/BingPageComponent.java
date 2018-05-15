@@ -1,4 +1,4 @@
-package customapplications.pageobject.bing;
+package com.webpt.testing.atf.pageobject.bing;
 
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -10,13 +10,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
-import com.webpt.WebptATFHandler;
-import com.webpt.managers.WebptConfigurationManager;
+import com.webpt.testing.atf.WebptATFHandler;
+import com.webpt.testing.atf.managers.WebptConfigurationManager;
 
 public class BingPageComponent extends LoadableComponent<BingPageComponent> {
 	private WebDriver driver = WebptATFHandler.getInstance().getWebAutomation().getWebDriver();
 	private final String BINGSEARCHFIELD_CLASS = "b_searchbox";
-	private final String BINGSEARCHBTN_CLASS = "b_searchboxSubmit22323";
+	private final String BINGSEARCHBTN_CLASS = "b_searchboxSubmit";
 	private final String BINGMAPSTAB_CSS = "#b_results li:nth-of-type(" + 1 + ") a";
 	private final String MAPSSEARCH_ID = "maps_sb";
 

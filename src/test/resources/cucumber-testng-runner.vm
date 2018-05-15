@@ -3,7 +3,7 @@ import org.testng.annotations.*;
 import org.testng.ITestResult;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import com.webpt.WebptATFHandler;
+import com.webpt.testing.atf.WebptATFHandler;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.TestNGCucumberRunner;

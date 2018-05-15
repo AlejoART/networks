@@ -7,7 +7,7 @@
 <webpt-test-environment>
 
 
-<atf>
+<webpt>
 
 
 <customapplicationconfig>
@@ -238,6 +238,6 @@
 
 </other>
 
-</atf>
+</webpt>
 
 </webpt-test-environment>

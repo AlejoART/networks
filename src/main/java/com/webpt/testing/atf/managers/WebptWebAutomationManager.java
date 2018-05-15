@@ -1,28 +1,20 @@
-package com.webpt.managers;
+package com.webpt.testing.atf.managers;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.opera.core.systems.OperaDriver;
-import com.webpt.WebptATFHandler;
+
+import com.webpt.testing.atf.WebptATFHandler;
 
 import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.Dimension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -269,7 +261,7 @@ public class WebptWebAutomationManager {
 			
 			try {
 		
-			      gridUrl = new URL ("http://10.0.0.150:5555/wd/hub");
+			      gridUrl = new URL ("/wd/hub");
 			} catch (MalformedURLException e) {
 				log.error("Unable to create grid URL to create remote web driver.");
 			}

@@ -1,7 +1,7 @@
 target/
 test-output/
-screenshot
-
+screenshot/
+STDOUT
 *.iml
 .idea
 .project
