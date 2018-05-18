@@ -10,6 +10,7 @@
 
 	<name>cucumber-base</name>
 	<url>http://maven.apache.org</url>
+
 	<repositories>
 		<repository>
 			<id>repo-liferay</id>
@@ -28,23 +29,27 @@
 			</snapshots>
 		</repository>
 	</repositories>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<testng.version>6.14.3</testng.version>
+		<java.version>8</java.version>
+		<selenium.version>3.11.0</selenium.version>
+		<rest.assured.version>2.4.1</rest.assured.version>
+		<assertj.version>3.6.2</assertj.version>
+		<surefire.version>2.21.0</surefire.version>
+		<failsafe.version>2.21.0</failsafe.version>
+		<sonar.scanner.version>3.2</sonar.scanner.version>
+
+        <threads>2</threads>
+        <build.number>1</build.number>
+	</properties>
+
 	<dependencies>
-		<!-- <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> 
-			<version>3.8.1</version> <scope>test</scope> </dependency> -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>${testng.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -62,20 +67,19 @@
 			<version>${selenium.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.opera</groupId>
-			<artifactId>operadriver</artifactId>
-			<version>0.7.3</version>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>2.4.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
 			<version>${assertj.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-			<version>2.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -88,6 +92,11 @@
 			<version>3.0</version>
 		</dependency>
 		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-configuration</groupId>
 			<artifactId>commons-configuration</artifactId>
 			<version>1.9</version>
@@ -97,76 +106,6 @@
 			<artifactId>commons-jxpath</artifactId>
 			<version>1.3</version>
 		</dependency>
-		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>1.8.3</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-dbutils</groupId>
-			<artifactId>commons-dbutils</artifactId>
-			<version>1.5</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.187</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jdom</groupId>
-			<artifactId>jdom2</artifactId>
-			<version>2.0.6</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-core</artifactId>
-			<version>${jbehave.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-java8</artifactId>
-			<version>1.2.5</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>1.2.5</version>
-		</dependency>
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>1.2.5</version>
-		</dependency>
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-core</artifactId>
-			<version>1.2.5</version>
-		</dependency>
-		<dependency>
-			<groupId>com.liferay</groupId>
-			<artifactId>net.jsourcerer.webdriver.JSErrorCollector</artifactId>
-			<version>0.6</version>
-		</dependency>
-		<dependency>
-
-			<groupId>org.sikuli</groupId>
-			<artifactId>sikuli-api</artifactId>
-			<version>1.2.0</version>
-		</dependency>
-		
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
@@ -178,11 +117,15 @@
 			<version>1.2.3</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.11.0</version>
+			<groupId>com.liferay</groupId>
+			<artifactId>net.jsourcerer.webdriver.JSErrorCollector</artifactId>
+			<version>0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.mkolisnyk</groupId>
@@ -190,11 +133,31 @@
 			<version>1.0.8</version>
 		</dependency>
 
+        <!-- for yaml configs -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.9.5</version>
+        </dependency>
+
+		<!--
+
 		<dependency>
 			<groupId>net.masterthought</groupId>
 			<artifactId>maven-cucumber-reporting</artifactId>
 			<version>3.16.0</version>
 		</dependency>
+		-->
 
 	</dependencies>
 	<build>
@@ -219,13 +182,7 @@
 					<fork>true</fork>
 					<meminitial>1024m</meminitial>
 					<maxmem>2048</maxmem>
-					<compilerArgs>
-						<arg>-Xmx2048m -XX:MaxPermSize=2048</arg>
-					</compilerArgs>
 					<encoding>${project.build.sourceEncoding}</encoding>
-					<properties>
-						<rerunFailingTestsCount>2</rerunFailingTestsCount>
-					</properties>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -233,130 +190,45 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${surefire.version}</version>
 				<configuration>
-					<testFailureIgnore>true</testFailureIgnore>
-					<!--<includes> <exclude>**/cucumber-testng-runner.vm</exclude> </includes> -->
-					<forkCount>1</forkCount>
-					<!-- <argLine>-Xmx2048m -XX:MaxPermSize=128</argLine> -->
-					<!-- Suite testng xml file to consider for test execution -->
 					<suiteXmlFiles>
-
-						<!-- <suiteXmlFile></suiteXmlFile> -->
+						<!--<suiteXmlFile>testng.xml</suiteXmlFile>-->
 					</suiteXmlFiles>
-
 					<properties>
-						<rerunFailingTestsCount>2</rerunFailingTestsCount>
+						<property>
+							<name>parallel</name>
+							<value>methods</value>
+						</property>
+						<property>
+							<name>dataproviderthreadcount</name>
+							<value>${threads}</value>
+						</property>
 					</properties>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.4</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.wagon</groupId>
-						<artifactId>wagon-webdav-jackrabbit</artifactId>
-						<version>2.8</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<locales>en</locales>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>com.github.temyers</groupId>
-				<artifactId>cucumber-jvm-parallel-plugin</artifactId>
-				<version>2.2.0</version>
-				<executions>
-					<execution>
-						<id>generateRunners</id>
-						<phase>generate-test-sources</phase>
-						<goals>
-							<goal>generateRunners</goal>
-						</goals>
-						<configuration>
-							<!-- Mandatory -->
-							<!-- comma separated list of package names to scan for glue code -->
-							<!--<glue>com.webpt.step.definition.bing</glue> -->
-							<glue>com.webpt.testing.atf.step.definition</glue>
-							<!-- These are optional, with the default values <name>json</name> 
-								<extension>json</extension> -->
-							<!-- Where to output the generated tests -->
-							<outputDirectory>${project.build.directory}/cucumber-parallel/</outputDirectory>
-							<!-- The directory, which must be in the root of the runtime classpath, 
-								containing your feature files. -->
-							<featuresDirectory>src/test/resources/features/</featuresDirectory>
-							<!-- Directory where the cucumber report files shall be written -->
-							<cucumberOutputDir>target/output/json</cucumberOutputDir>
-							<!-- comma separated list of output formats -->
-
-
-							<format>json</format>
-							<!-- CucumberOptions.strict property -->
-							<strict>true</strict>
-							<!-- CucumberOptions.monochrome property -->
-							<monochrome>true</monochrome>
-							<!-- The tags to run, maps to CucumberOptions.tags property -->
-							<tags>${tags}</tags>
-
-							<!-- If set to true, only feature files containing the required tags 
-								shall be generated. -->
-							<filterFeaturesByTags>true</filterFeaturesByTags>
-							<!-- Generate TestNG runners instead of JUnit ones. -->
-							<useTestNG>true</useTestNG>
-							<!-- The naming scheme to use for the generated test classes. One 
-								of 'simple' or 'feature-title' -->
-							<namingScheme>simple</namingScheme>
-							<!-- The class naming pattern to use. Only required/used if naming 
-								scheme is 'pattern'. -->
-							<namingPattern>Parallel{c}IT</namingPattern>
-							<!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per 
-								scenario. FEATURE generates a runner per feature. -->
-							<parallelScheme>FEATURE</parallelScheme>
-							<!-- Specify a custom template for the generated sources (this is 
-								a path relative to the project base directory) -->
-							<customVmTemplate>/src/test/resources/cucumber-testng-runner.vm</customVmTemplate>
-
-							<!-- Specify a custom package name for generated sources. Default 
-								is no package. -->
-							<packageName>webpt.tests.driver</packageName>
-
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 
 			<!-- Fail safe plugin handles execution of the cucumber tests -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${failsafe.version}</version>
-				<configuration>
-					<includes>
-						<include>Parallel*.java</include>
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-failsafe-plugin</artifactId>-->
+				<!--<version>${failsafe.version}</version>-->
+				<!--<configuration>-->
+					<!--<includes>-->
+						<!--<include>Parallel*.java</include>-->
 
-					</includes>
-					<testFailureIgnore>true</testFailureIgnore>
-					<forkCount>${threads}</forkCount>
-					<runOrder>alphabetical</runOrder>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+					<!--</includes>-->
+					<!--<testFailureIgnore>true</testFailureIgnore>-->
+					<!--<forkCount>${threads}</forkCount>-->
+					<!--<runOrder>alphabetical</runOrder>-->
+				<!--</configuration>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<goals>-->
+							<!--<goal>integration-test</goal>-->
+							<!--<goal>verify</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
 
 			<plugin>
 				<groupId>net.masterthought</groupId>
@@ -365,74 +237,23 @@
 				<executions>
 					<execution>
 						<id>execution</id>
-						<phase>verify</phase>
+						<phase>test</phase>
 						<goals>
 							<goal>generate</goal>
 						</goals>
 						<configuration>
 							<projectName>cucumber-testNG-starter</projectName>
-							<outputDirectory>${project.build.directory}/output/cucumber-reports</outputDirectory>
+							<jsonFiles>${project.build.directory}/cucumber/data/cucumber.json</jsonFiles>
+							<outputDirectory>${project.build.directory}/cucumber</outputDirectory>
 							<parallelTesting>true</parallelTesting>
 							<checkBuildResult>true</checkBuildResult>
-							<skippedFails>false</skippedFails>
-							<enableFlashCharts>false</enableFlashCharts>
-							<buildNumber>1</buildNumber>
+							<buildNumber>${build.number}</buildNumber>
 						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-				<version>0.12</version>
-				<configuration>
-					<message>Creating site for ${project.version}</message>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>site</goal>
-						</goals>
-						<phase>site</phase>
 					</execution>
 				</executions>
 			</plugin>
 
 		</plugins>
 	</build>
-	<distributionManagement>
-		<!-- mvn deploy -->
-
-		<repository>
-			<id>com.wptdev.nexus.releases</id>
-			<name>WebPT Releases</name>
-			<url>https://nexus.wptdev.com/nexus/content/repositories/releases</url>
-		</repository>
-
-		<snapshotRepository>
-			<id>com.wptdev.nexus.snapshots</id>
-			<name>WebPT Snapshots</name>
-			<url>https://nexus.wptdev.com/nexus/content/repositories/snapshots</url>
-
-		</snapshotRepository>
-
-	</distributionManagement>
-      <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<testng.version>6.14.2</testng.version>
-		<slf4j.version>1.7.5</slf4j.version>
-		<java.version>8</java.version>
-		<selenium.version>3.11.0</selenium.version>
-		<rest.assured.version>2.4.1</rest.assured.version>
-		<jbehave.version>3.9.5</jbehave.version>
-		<assertj.version>3.6.2</assertj.version>
-		<surefire.version>2.20.1</surefire.version>
-		<failsafe.version>2.20.1</failsafe.version>
-		<threads>2</threads>
-		<!-- sonar dependencies -->
-		<sonar.scanner.version>3.2</sonar.scanner.version>
-		<!-- <sonar.host.url>http://bluedrop.mynetgear.com:9997/</sonar.host.url> -->
-		<mongodb.version>3.4.2</mongodb.version>
-	</properties>
 
 </project>

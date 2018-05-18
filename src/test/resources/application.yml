@@ -1,0 +1,35 @@
+webdriver:
+  driver: chrome
+  # use these to work with a selenium grid or remote service provider like sauce labs
+  #remote:
+  #  driver:
+  #  url:
+
+chrome:
+  # Use this if you want to specify the binary file the chrome driver should use
+  # binary:
+
+  # I don't know what all these arguments are, they were just in the previous code version
+  # of the driver config so I copied them here
+  arguments:
+    - --disable-notifications
+    - --test-type
+    - chrome.switches
+    - --disable-extensions
+    - --disable-popup-blocking
+    - --use-fake-ui-for-media-stream
+  headless: false
+
+firefox:
+  # Use this if you want to specify the binary file the firefox driver should use
+  # binary:
+  # ge
+  trust_all_ssl_certificates: true
+  accept_untrusted_certs: true
+
+
+downloads:
+  directory: out/downloads
+
+# general remote capabilities
+capabilities:

@@ -7,237 +7,246 @@
 <webpt-test-environment>
 
 
-<webpt>
+    <webpt>
 
 
-<customapplicationconfig>
+        <customapplicationconfig>
 
-<testdata-folder>testData/</testdata-folder>
+            <testdata-folder>testData/</testdata-folder>
 
-</customapplicationconfig>
+        </customapplicationconfig>
 
 
-<web>
+        <web>
 
 
-<base-url>
+            <base-url>
 
-<google>https://www.google.com/</google>
-<bing>https://www.bing.com/</bing>
+                <google>https://www.google.com/</google>
+                <bing>https://www.bing.com/</bing>
 
-</base-url>
+            </base-url>
 
-</web>
+        </web>
 
 
-<desired-capabilities>
+        <desired-capabilities>
 
-<unexpected-alert-behaviour>accept</unexpected-alert-behaviour>
+            <unexpected-alert-behaviour>accept</unexpected-alert-behaviour>
 
-<browser-name>chrome</browser-name>
+            <browser-name>chrome</browser-name>
 
-<browser-version>65</browser-version>
+            <browser-version>65</browser-version>
 
-<browser-download-path>/chromeDriver/chrome237/chromedriver</browser-download-path>
+            <browser-download-path>/chromeDriver/chrome237/chromedriver</browser-download-path>
 
-<platform/>
+            <platform/>
 
-<takes-screenshot>true</takes-screenshot>
+            <takes-screenshot>true</takes-screenshot>
 
-<!-- Using Saucelabs -->
+            <!-- Using Saucelabs -->
 
-<grid-use>false</grid-use>
+            <grid-use>false</grid-use>
 
-<grid-url>http://company:accesskey@ondemand.saucelabs.com:80/wd/hub </grid-url>
+            <grid-url>http://company:accesskey@ondemand.saucelabs.com:80/wd/hub</grid-url>
 
-<grid-selenium-protocol>http://10.0.0.171:4444/wd/hub</grid-selenium-protocol>
+            <grid-selenium-protocol>http://10.0.0.171:4444/wd/hub</grid-selenium-protocol>
 
-<grid-max-instances/>
+            <grid-max-instances/>
 
-<chrome>
+            <chrome>
 
-<proxy/>
+                <proxy/>
 
 
--<chrome-options>
+                -
+                <chrome-options>
 
-<args/>
+                    <args/>
 
-<binary/>
+                    <binary/>
 
-<extensions/>
+                    <extensions/>
 
-</chrome-options>
+                </chrome-options>
 
-</chrome>
+            </chrome>
 
 
--<firefox>
+            -
+            <firefox>
 
 
+                <logging-prefs/>
 
-<logging-prefs/>
+                <binary/>
 
-<binary/>
+                <rc-mode/>
 
-<rc-mode/>
+                <rc-capture-network-traffic/>
 
-<rc-capture-network-traffic/>
+                <rc-add-custom-request-header/>
 
-<rc-add-custom-request-header/>
+                <rc-trust-all-ssl-cert/>
 
-<rc-trust-all-ssl-cert/>
+                <webdriver-accept-untrusted-certs/>
 
-<webdriver-accept-untrusted-certs/>
+                <webdriver-assume-untrusted-issuer/>
 
-<webdriver-assume-untrusted-issuer/>
+                <webdriver-log-driver/>
 
-<webdriver-log-driver/>
+                <webdriver-log-file/>
 
-<webdriver-log-file/>
+                <webdriver-log-file/>
 
-<webdriver-log-file/>
+                <webdriver-load-strategy/>
 
-<webdriver-load-strategy/>
+                <webdriver-port/>
 
-<webdriver-port/>
+            </firefox>
 
-</firefox>
 
+            -
+            <ie>
 
--<ie>
+                <ignore-protected-mode-settings/>
 
-<ignore-protected-mode-settings/>
+                <ignore-zoom-setting/>
 
-<ignore-zoom-setting/>
+                <initial-browser-url/>
 
-<initial-browser-url/>
+                <enable-persistent-hover/>
 
-<enable-persistent-hover/>
+                <enable-element-cache-cleanup/>
 
-<enable-element-cache-cleanup/>
+                <require-window-focus/>
 
-<require-window-focus/>
+                <browser-attach-timeout/>
 
-<browser-attach-timeout/>
+                <force-create-process-api/>
 
-<force-create-process-api/>
+                <browser-cmd-line-switches/>
 
-<browser-cmd-line-switches/>
+                <use-per-process-proxy/>
 
-<use-per-process-proxy/>
+                <ensure-clean-session/>
 
-<ensure-clean-session/>
+                <log-file/>
 
-<log-file/>
+                <log-level/>
 
-<log-level/>
+                <host/>
 
-<host/>
+                <extract-path/>
 
-<extract-path/>
+                <silent/>
 
-<silent/>
+                <set-proxy-by-server/>
 
-<set-proxy-by-server/>
+                <rc-mode/>
 
-<rc-mode/>
+                <rc-kill-processes-by-name/>
 
-<rc-kill-processes-by-name/>
+                <rc-honor-system-proxy/>
 
-<rc-honor-system-proxy/>
+                <rc-ensure-clean-session/>
 
-<rc-ensure-clean-session/>
+            </ie>
 
-</ie>
 
+            -
+            <safari>
 
--<safari>
+                <use-options/>
 
-<use-options/>
+                <port/>
 
-<port/>
+                <use-clean-session/>
 
-<use-clean-session/>
+                <rc-mode/>
 
-<rc-mode/>
+                <rc-honor-system-proxy/>
 
-<rc-honor-system-proxy/>
+            </safari>
 
-</safari>
+        </desired-capabilities>
 
-</desired-capabilities>
 
+        -
+        <reporting>
 
--<reporting>
+            <!-- report file locations, switches to turn different reporting on\off -->
 
-<!-- report file locations, switches to turn different reporting on\off -->
 
+            <use-jserrorcollector-with-firefox>false</use-jserrorcollector-with-firefox>
 
-<use-jserrorcollector-with-firefox>false</use-jserrorcollector-with-firefox>
+            <buffered-image-save-location></buffered-image-save-location>
 
-<buffered-image-save-location></buffered-image-save-location>
+            <buffered-image-save-format>PNG</buffered-image-save-format>
 
-<buffered-image-save-format>PNG</buffered-image-save-format>
+            <takes-screenshot-save-location></takes-screenshot-save-location>
 
-<takes-screenshot-save-location></takes-screenshot-save-location>
+        </reporting>
 
-</reporting>
 
+        -
+        <databases>
 
--<databases>
 
+            -
+            <database>
 
--<database>
+                <!-- primary datasource -->
 
-<!-- primary datasource -->
 
+                <db-key>PRIMARY</db-key>
 
-<db-key>PRIMARY</db-key>
+                <db-driver>mongodb.jdbc.MongoDriver</db-driver>
 
-<db-driver>mongodb.jdbc.MongoDriver</db-driver>
+                <db-user/>
 
-<db-user/>
+                <db-password/>
 
-<db-password/>
+                <db-url>mongodb://localhost:27017/nameofdb</db-url>
 
-<db-url>mongodb://localhost:27017/nameofdb</db-url>
+            </database>
 
-</database>
 
+            -
+            <database>
 
--<database>
+                <db-key>H2-SECONDARY</db-key>
 
-<db-key>H2-SECONDARY</db-key>
+                <db-driver>org.h2.Driver</db-driver>
 
-<db-driver>org.h2.Driver</db-driver>
+                <db-user>sa</db-user>
 
-<db-user>sa</db-user>
+                <db-password/>
 
-<db-password/>
+                <db-url>jdbc:h2:tcp://192.168.1.49:9123/mem:devDb</db-url>
 
-<db-url>jdbc:h2:tcp://192.168.1.49:9123/mem:devDb</db-url>
+            </database>
 
-</database>
+        </databases>
 
-</databases>
 
+        -
+        <other>
 
--<other>
 
+            -
+            <image-library>
 
--<image-library>
+                <windows>${resource-path}/${app-path}/image</windows>
 
-<windows>${resource-path}/${app-path}/image</windows>
+                <linux>${resource-path}/${app-path}/image</linux>
 
-<linux>${resource-path}/${app-path}/image</linux>
+                <macosx>${resource-path}/${app-path}/image</macosx>
 
-<macosx>${resource-path}/${app-path}/image</macosx>
+            </image-library>
 
-</image-library>
+        </other>
 
-</other>
-
-</webpt>
+    </webpt>
 
 </webpt-test-environment>

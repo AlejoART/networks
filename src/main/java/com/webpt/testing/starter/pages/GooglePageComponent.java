@@ -1,4 +1,4 @@
-package com.webpt.testing.atf.pageobject.google;
+package com.webpt.testing.starter.pages;
 
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
 import com.webpt.testing.atf.WebptATFHandler;
-import com.webpt.testing.atf.managers.WebptConfigurationManager;
+import com.webpt.testing.atf.config2.WebptConfigurationManager;
 
 
 
@@ -22,6 +22,18 @@ public class GooglePageComponent extends LoadableComponent<GooglePageComponent> 
 	private final String GOOGLESEARCHBTN_CSS = ".jsb input[name='btnK']";
 	private final String GOOGLEMAPSTAB_CSS = "#rso a:nth-of-type(" + 1 + ")";
 	private final String SEARCHGOOGLEMAPS_ID = "searchboxinput";
+
+	@FindBy(id = GOOGLESEARCHFIELD_ID)
+	private WebElement google_search_text;
+	@FindBy(css = GOOGLESEARCHBTN_CSS)
+	private WebElement google_search_btn;
+	@FindBy(css = GOOGLEMAPSTAB_CSS)
+	private WebElement googleMapsTab;
+	@FindBy(id = SEARCHGOOGLEMAPS_ID)
+	private WebElement searchGoogleMaps;
+	@FindBy(id ="rcnt")
+	private WebElement searchResults;
+
 	@Override
 	protected void load() {
 		// TODO Auto-generated method stub
@@ -49,15 +61,6 @@ public class GooglePageComponent extends LoadableComponent<GooglePageComponent> 
 		assertTrue("there is no issue with the entry page:  " + url, url.endsWith("/"));
 
 	}
-	
-	@FindBy(id = GOOGLESEARCHFIELD_ID)
-	private WebElement google_search_text;
-	@FindBy(css = GOOGLESEARCHBTN_CSS)
-	private WebElement google_search_btn;
-	@FindBy(css = GOOGLEMAPSTAB_CSS)
-	private WebElement googleMapsTab;
-	@FindBy(id = SEARCHGOOGLEMAPS_ID)
-	private WebElement searchGoogleMaps;
 	
 	public void googleSearchText(String search) {
 		try {
@@ -94,6 +97,9 @@ public class GooglePageComponent extends LoadableComponent<GooglePageComponent> 
 		}catch(Exception e) {
 			Assert.fail("failed due to:  " + e.getMessage());
 		}
+	}
+	public void resultsContain(String term){
+		Assert.assertTrue(searchResults.getText().contains(term));
 	}
 
 }

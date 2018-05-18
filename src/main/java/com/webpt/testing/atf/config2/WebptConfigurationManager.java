@@ -1,4 +1,4 @@
-package com.webpt.testing.atf.managers;
+package com.webpt.testing.atf.web;
 import com.google.common.base.Functions;
 import com.google.common.collect.Lists;
 import org.apache.commons.configuration.*;
@@ -15,11 +15,19 @@ import java.util.List;
 import java.util.Properties;
 
 public class WebptConfigurationManager {
-	private static Logger log = LoggerFactory.getLogger(WebptConfigurationManager.class);
-	private String defaultConfigurationFileName = "webpt-config.xml";
 
+	private static Logger log = LoggerFactory.getLogger(WebptConfigurationManager.class);
+
+	private String defaultConfigurationFileName = "webpt-config.xml";
 	
 	private static WebptConfigurationManager webptConfigurationInstance;
+
+	/**
+	 * AllConfiguration
+	 * Contains all configuration entries
+	 */
+	private Configuration AllConfiguration;
+
 	private WebptConfigurationManager() { loadConfiguration(); }
 
 	/**
@@ -41,12 +49,6 @@ public class WebptConfigurationManager {
 		}
 		return webptConfigurationInstance;
 	}
-	
-	/**
-	 * AllConfiguration
-	 * Contains all configuration entries
-	 */
-	public Configuration AllConfiguration;
 
 	private void loadConfiguration()
 	{
@@ -305,7 +307,8 @@ public class WebptConfigurationManager {
     }    
     public Boolean getUseGrid() {
     	String key = "webpt/desired-capabilities/grid-use";
-    	return getBooleanConfigEntry(key);
+    	Boolean useGrid = getBooleanConfigEntry(key);
+    	return useGrid != null && useGrid;
     }
 	public String getGridUsername() {
 		String key = "webpt/desired-capabilities/grid-username";
