@@ -63,9 +63,11 @@ public class ConfigurationManager {
 
     private String getConfigFilePath(String fileName) {
         URL url = this.getClass().getClassLoader().getResource(fileName);
+       
         if(url == null){
             throw new RuntimeException("Config file not found in resources directory: [" + fileName + "]");
         }
+        System.out.println("dfddfasf" + url.getPath());
         return url.getPath();
     }
 

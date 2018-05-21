@@ -18,13 +18,11 @@
 
     <takes-screenshot>true</takes-screenshot>
 
-    <!-- Using Saucelabs -->
-
     <grid-use>false</grid-use>
 
-    <grid-url>http://company:accesskey@ondemand.saucelabs.com:80/wd/hub</grid-url>
+    <grid-url>http://......../wd/hub</grid-url>
 
-    <grid-selenium-protocol>http://10.0.0.171:4444/wd/hub</grid-selenium-protocol>
+    <grid-selenium-protocol>http://......./wd/hub</grid-selenium-protocol>
 
     <grid-max-instances/>
 
@@ -80,70 +78,6 @@
         <webdriver-port/>
 
     </firefox>
-
-
-    -
-    <ie>
-
-        <ignore-protected-mode-settings/>
-
-        <ignore-zoom-setting/>
-
-        <initial-browser-url/>
-
-        <enable-persistent-hover/>
-
-        <enable-element-cache-cleanup/>
-
-        <require-window-focus/>
-
-        <browser-attach-timeout/>
-
-        <force-create-process-api/>
-
-        <browser-cmd-line-switches/>
-
-        <use-per-process-proxy/>
-
-        <ensure-clean-session/>
-
-        <log-file/>
-
-        <log-level/>
-
-        <host/>
-
-        <extract-path/>
-
-        <silent/>
-
-        <set-proxy-by-server/>
-
-        <rc-mode/>
-
-        <rc-kill-processes-by-name/>
-
-        <rc-honor-system-proxy/>
-
-        <rc-ensure-clean-session/>
-
-    </ie>
-
-
-    -
-    <safari>
-
-        <use-options/>
-
-        <port/>
-
-        <use-clean-session/>
-
-        <rc-mode/>
-
-        <rc-honor-system-proxy/>
-
-    </safari>
 
     <reporting>
 

@@ -4,6 +4,7 @@ screenshot/
 STDOUT
 *.iml
 .idea
-.project
-.setting
+/*.project
+/.settings
+/.classpath
 .DS_Store
