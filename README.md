@@ -8,7 +8,8 @@ This is a starter project for Cucumber / Selenium automated tests.
 ### Known Issue / Things That Still Need to Be Accomplished
 
 * Logging is not working quite right. log4j.properties isn't controlling all logs.
-* Image capture and attaching to reports
+* Image capture and attaching to reports.
+* CI - Not sure what should go into it. Maybe: linting, unit tests, docker image build
 * Evaluate if Pico container should be used. How would it work with PageObject Factory.
 * Break the atf folder out into it's own reusable project. 
     * This may present challenges with where configuration files lives.
