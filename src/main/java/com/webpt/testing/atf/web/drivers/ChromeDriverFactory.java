@@ -1,6 +1,6 @@
 package com.webpt.testing.atf.web.drivers;
 
-import com.webpt.testing.atf.config.Config;
+import com.webpt.testing.atf.config.WebDriverConfiguration;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,9 +14,9 @@ import java.util.List;
 
 public class ChromeDriverFactory {
 
-    private Config config;
+    private WebDriverConfiguration config;
 
-    public ChromeDriverFactory(Config config) {
+    public ChromeDriverFactory(WebDriverConfiguration config) {
         this.config = config;
     }
 
@@ -40,7 +40,7 @@ public class ChromeDriverFactory {
         capabilities.setCapability("ignoreZoomSetting", true);
         capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
 
-        String chromeProxy = config.get("chrome.proxy");
+        String chromeProxy = config.getChromeProxy();
         if (chromeProxy != null && !chromeProxy.isEmpty()) {
             Proxy proxy = new Proxy();
             proxy.setHttpProxy(chromeProxy);
@@ -57,7 +57,7 @@ public class ChromeDriverFactory {
     protected ChromeOptions getOptions(){
         ChromeOptions options = new ChromeOptions();
 
-        List<String> args = config.getChromeArguments();
+        List<String> args = config.getChromeArgs();
         if (args != null && args.size() > 0) {
             options.addArguments(args);
         }

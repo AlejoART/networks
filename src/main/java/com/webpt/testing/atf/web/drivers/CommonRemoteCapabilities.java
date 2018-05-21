@@ -1,17 +1,15 @@
 package com.webpt.testing.atf.web.drivers;
 
-import com.webpt.testing.atf.config.Config;
-import com.webpt.testing.atf.config.ConfigFactory;
-import com.webpt.testing.atf.config2.WebptConfigurationManager;
+import com.webpt.testing.atf.config.WebDriverConfiguration;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class CommonRemoteCapabilities {
 
     public static DesiredCapabilities apply(DesiredCapabilities capabilities) {
-        Config config = ConfigFactory.getConfig();
+        WebDriverConfiguration wc = new WebDriverConfiguration();
 
-        String platform = config.getWebdriverPlatform();
+        String platform = wc.getPlatform();
         if (platform != null) {
             platform = platform.toLowerCase();
             if (platform.contains("windows")) {
@@ -37,71 +35,71 @@ public class CommonRemoteCapabilities {
             capabilities.setCapability("platform", Platform.ANY);
         }
 
-        if (config.getUnexpectedAlertBehavior() != null) {
-            capabilities.setCapability("unexpectedAlertBehaviour", config.getUnexpectedAlertBehavior());
+        if (wc.getUnexpectedAlertBehavior() != null) {
+            capabilities.setCapability("unexpectedAlertBehaviour", wc.getUnexpectedAlertBehavior());
         } else {
             capabilities.setCapability("unexpectedAlertBehaviour", "dismiss");
         }
-        if (config.getBrowserVersion() != null) {
-            capabilities.setCapability("browserVersion", config.getBrowserVersion());
+        if (wc.getWebBrowserVersion() != null) {
+            capabilities.setCapability("browserVersion", wc.getWebBrowserVersion());
         }
-        if (config.getTakesScreenshot() != null) {
-            capabilities.setCapability("takesScreenshot", config.getTakesScreenshot());
+        if (wc.getTakesScreenshot() != null) {
+            capabilities.setCapability("takesScreenshot", wc.getTakesScreenshot());
         }
-        if (config.getHandlesAlerts() != null) {
-            capabilities.setCapability("handlesAlerts", config.getHandlesAlerts());
+        if (wc.getHandlesAlerts() != null) {
+            capabilities.setCapability("handlesAlerts", wc.getHandlesAlerts());
         }
-        if (config.getCSSSelectorsEnabled() != null) {
-            capabilities.setCapability("cssSelectorsEnabled", config.getCSSSelectorsEnabled());
+        if (wc.getCSSSelectorsEnabled() != null) {
+            capabilities.setCapability("cssSelectorsEnabled", wc.getCSSSelectorsEnabled());
         }
-        if (WebptConfigurationManager.getInstance().getJavascriptEnabled() != null)
-            capabilities.setCapability("javascriptEnabled", WebptConfigurationManager.getInstance().getJavascriptEnabled());
-        if (WebptConfigurationManager.getInstance().getDatabaseEnabled() != null)
-            capabilities.setCapability("databaseEnabled", WebptConfigurationManager.getInstance().getDatabaseEnabled());
-        if (WebptConfigurationManager.getInstance().getLocationContextEnabled() != null)
+        if (wc.getJavascriptEnabled() != null)
+            capabilities.setCapability("javascriptEnabled", wc.getJavascriptEnabled());
+        if (wc.getDatabaseEnabled() != null)
+            capabilities.setCapability("databaseEnabled", wc.getDatabaseEnabled());
+        if (wc.getLocationContextEnabled() != null)
             capabilities.setCapability("locationContextEnabled",
-                    WebptConfigurationManager.getInstance().getLocationContextEnabled());
-        if (WebptConfigurationManager.getInstance().getApplicationCacheEnabled() != null)
+                    wc.getLocationContextEnabled());
+        if (wc.getApplicationCacheEnabled() != null)
             capabilities.setCapability("applicationCacheEnabled",
-                    WebptConfigurationManager.getInstance().getApplicationCacheEnabled());
-        if (WebptConfigurationManager.getInstance().getBrowserConnectionEnabled() != null)
+                    wc.getApplicationCacheEnabled());
+        if (wc.getBrowserConnectionEnabled() != null)
             capabilities.setCapability("browserConnectionEnabled",
-                    WebptConfigurationManager.getInstance().getBrowserConnectionEnabled());
-        if (WebptConfigurationManager.getInstance().getWebStorageEnabled() != null)
-            capabilities.setCapability("webStorageEnabled", WebptConfigurationManager.getInstance().getWebStorageEnabled());
-        if (WebptConfigurationManager.getInstance().getAcceptSSLCerts() != null)
-            capabilities.setCapability("acceptSslCerts", WebptConfigurationManager.getInstance().getAcceptSSLCerts());
-        if (WebptConfigurationManager.getInstance().getRotatable() != null)
-            capabilities.setCapability("rotatable", WebptConfigurationManager.getInstance().getRotatable());
-        if (WebptConfigurationManager.getInstance().getNativeEvents() != null)
-            capabilities.setCapability("nativeEvents", WebptConfigurationManager.getInstance().getNativeEvents());
-        if (WebptConfigurationManager.getInstance().getUnexpectedAlertBehavior() != null)
+                    wc.getBrowserConnectionEnabled());
+        if (wc.getWebStorageEnabled() != null)
+            capabilities.setCapability("webStorageEnabled", wc.getWebStorageEnabled());
+        if (wc.getAcceptSSLCerts() != null)
+            capabilities.setCapability("acceptSslCerts", wc.getAcceptSSLCerts());
+        if (wc.getRotatable() != null)
+            capabilities.setCapability("rotatable", wc.getRotatable());
+        if (wc.getNativeEvents() != null)
+            capabilities.setCapability("nativeEvents", wc.getNativeEvents());
+        if (wc.getUnexpectedAlertBehavior() != null)
             capabilities.setCapability("unexpectedAlertBehaviour",
-                    WebptConfigurationManager.getInstance().getUnexpectedAlertBehavior());
-        if (WebptConfigurationManager.getInstance().getElementScrollBehavior() != null)
+                    wc.getUnexpectedAlertBehavior());
+        if (wc.getElementScrollBehavior() != null)
             capabilities.setCapability("elementScrollBehavior",
-                    WebptConfigurationManager.getInstance().getElementScrollBehavior());
+                    wc.getElementScrollBehavior());
 
         // JSON Proxy
-        if (WebptConfigurationManager.getInstance().getJSONProxyType().length() > 0)
-            capabilities.setCapability("proxyType", WebptConfigurationManager.getInstance().getJSONProxyType());
-        if (WebptConfigurationManager.getInstance().getJSONProxyAutoConfigURL().length() > 0)
+        if (wc.getJSONProxyType().length() > 0)
+            capabilities.setCapability("proxyType", wc.getJSONProxyType());
+        if (wc.getJSONProxyAutoConfigURL().length() > 0)
             capabilities.setCapability("proxyAutoconfigUrl",
-                    WebptConfigurationManager.getInstance().getJSONProxyAutoConfigURL());
-        if (WebptConfigurationManager.getInstance().getJSONProxy().length() > 0)
-            capabilities.setCapability(WebptConfigurationManager.getInstance().getJSONProxy(),
-                    WebptConfigurationManager.getInstance().getJSONProxy());
-        if (WebptConfigurationManager.getInstance().getJSONSocksUsername().length() > 0)
-            capabilities.setCapability("socksUsername", WebptConfigurationManager.getInstance().getJSONSocksUsername());
-        if (WebptConfigurationManager.getInstance().getJSONSocksPassword().length() > 0)
-            capabilities.setCapability("socksPassword", WebptConfigurationManager.getInstance().getJSONSocksPassword());
-        if (WebptConfigurationManager.getInstance().getJSONNoProxy().length() > 0)
-            capabilities.setCapability("noProxy", WebptConfigurationManager.getInstance().getJSONNoProxy());
-        if (WebptConfigurationManager.getInstance().getJSONLoggingComponent().length() > 0)
-            capabilities.setCapability("component", WebptConfigurationManager.getInstance().getJSONLoggingComponent());
-        if (WebptConfigurationManager.getInstance().getRemoteWebDriverQuietExceptions() != null)
+                    wc.getJSONProxyAutoConfigURL());
+        if (wc.getJSONProxy().length() > 0)
+            capabilities.setCapability(wc.getJSONProxy(),
+                    wc.getJSONProxy());
+        if (wc.getJSONSocksUsername().length() > 0)
+            capabilities.setCapability("socksUsername", wc.getJSONSocksUsername());
+        if (wc.getJSONSocksPassword().length() > 0)
+            capabilities.setCapability("socksPassword", wc.getJSONSocksPassword());
+        if (wc.getJSONNoProxy().length() > 0)
+            capabilities.setCapability("noProxy", wc.getJSONNoProxy());
+        if (wc.getJSONLoggingComponent().length() > 0)
+            capabilities.setCapability("component", wc.getJSONLoggingComponent());
+        if (wc.getRemoteWebDriverQuietExceptions() != null)
             capabilities.setCapability("webdriver.remote.quietExceptions",
-                    WebptConfigurationManager.getInstance().getRemoteWebDriverQuietExceptions());
+                    wc.getRemoteWebDriverQuietExceptions());
 
         return capabilities;
     }

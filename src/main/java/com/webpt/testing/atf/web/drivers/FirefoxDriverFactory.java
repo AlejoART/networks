@@ -1,6 +1,6 @@
 package com.webpt.testing.atf.web.drivers;
 
-import com.webpt.testing.atf.config.Config;
+import com.webpt.testing.atf.config.WebDriverConfiguration;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -10,9 +10,9 @@ import java.io.File;
 
 public class FirefoxDriverFactory {
 
-    private Config config;
+    private WebDriverConfiguration config;
 
-    public FirefoxDriverFactory(Config config) {
+    public FirefoxDriverFactory(WebDriverConfiguration config) {
         this.config = config;
     }
 
@@ -32,21 +32,21 @@ public class FirefoxDriverFactory {
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, getOptions());
 
-        if (config.getFireFoxMode() != null) {
-            capabilities.setCapability("mode", config.getFireFoxMode());
+        if (config.getFirefoxRCMode() != null) {
+            capabilities.setCapability("mode", config.getFirefoxRCMode());
         }
-        if (config.getFireFoxCaptureNetworkTraffic() != null) {
-            capabilities.setCapability("captureNetworkTraffic", config.getFireFoxCaptureNetworkTraffic());
+        if (config.getFirefoxRCCaptureNetworkTraffic() != null) {
+            capabilities.setCapability("captureNetworkTraffic", config.getFirefoxRCCaptureNetworkTraffic());
         }
-        if (config.getFireFoxAddCustomRequestHeader() != null) {
-            capabilities.setCapability("addCustomRequestHeaders", config.getFireFoxAddCustomRequestHeader());
+        if (config.getFirefoxRCAddCustomReqHeader() != null) {
+            capabilities.setCapability("addCustomRequestHeaders", config.getFirefoxRCAddCustomReqHeader());
         }
-        if (config.getFireFoxTrustAllSSLCertificates() != null) {
-            capabilities.setCapability("trustAllSSLCertificates", config.getFireFoxTrustAllSSLCertificates());
+        if (config.getFirefoxRCTrustAllSSLCerts() != null) {
+            capabilities.setCapability("trustAllSSLCertificates", config.getFirefoxRCTrustAllSSLCerts());
         }
 
         // todo: this doesn't make sense. Why set the binary to the download path?
-        String binaryPath = config.getFireFoxBinary();
+        String binaryPath = config.getFirefoxBinary();
         if (binaryPath != null) {
             File binaryFile = new File(binaryPath);
             if (binaryFile.exists()) {
@@ -69,39 +69,39 @@ public class FirefoxDriverFactory {
 
         FirefoxProfile profile = new FirefoxProfile();
         profile.setPreference("browser.download.folderList", 2);
-        profile.setPreference("browser.download.dir", config.getDownloadsDirectory());
+        profile.setPreference("browser.download.dir", config.getWebBrowserDownloadPath());
         profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf");
         profile.setPreference("browser.download.manager.showWhenStarting", false);
         profile.setPreference("pdfjs.disabled", true);
         File profileFile = null;
-        if (config.getFireFoxProfileFile() !=  null) {
-            profileFile = new File(config.getFireFoxProfileFile());
+        if (config.getFirefoxProfileDirecotryAndFilename() !=  null) {
+            profileFile = new File(config.getFirefoxProfileDirecotryAndFilename());
         }
 
         if (profileFile != null && profileFile.exists()) {
             profile = new FirefoxProfile(profileFile);
         }
 
-        Boolean trust = config.getFireFoxTrustAllSSLCertificates();
+        Boolean trust = config.getFirefoxRCTrustAllSSLCerts();
         if (trust != null) {
             profile.setPreference("webdriver_accept_untrusted_certs", trust);
             profile.setPreference("webdriver_assume_untrusted_issuer", !trust);
         }
-        if (config.getFireFoxLogLevel() != null) {
-            profile.setPreference("webdriver.log.driver", config.getFireFoxLogLevel());
+        if (config.getFirefoxLogDriverLevel() != null) {
+            profile.setPreference("webdriver.log.driver", config.getFirefoxLogDriverLevel());
         }
-        if (config.getFireFoxLogFile() != null) {
-            profile.setPreference("webdriver.log.file", config.getFireFoxLogFile());
+        if (config.getFirefoxLogFile() != null) {
+            profile.setPreference("webdriver.log.file", config.getFirefoxLogFile());
         }
-        if (config.getFireFoxLoadStrategy() != null) {
-            profile.setPreference("webdriver.load.strategy", config.getFireFoxLoadStrategy());
+        if (config.getFirefoxLoadStrategy() != null) {
+            profile.setPreference("webdriver.load.strategy", config.getFirefoxLoadStrategy());
         }
-        if (config.getFireFoxPort() != null) {
-            profile.setPreference("webdriver_firefox_port", config.getFireFoxPort());
+        if (config.getFirefoxPort() != null) {
+            profile.setPreference("webdriver_firefox_port", config.getFirefoxPort());
         }
 
-        if (config.getFireFoxGeckoBinary() != null) {
-            System.setProperty("webdriver.gecko.driver", config.getFireFoxGeckoBinary());
+        if (config.getGeckoDriverLocation() != null) {
+            System.setProperty("webdriver.gecko.driver", config.getGeckoDriverLocation());
         }
 
         FirefoxOptions options = new FirefoxOptions();

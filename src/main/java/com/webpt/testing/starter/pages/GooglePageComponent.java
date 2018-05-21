@@ -2,6 +2,7 @@ package com.webpt.testing.starter.pages;
 
 import static org.testng.AssertJUnit.assertTrue;
 
+import com.webpt.testing.starter.config.Config;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -11,13 +12,13 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
 import com.webpt.testing.atf.WebptATFHandler;
-import com.webpt.testing.atf.config2.WebptConfigurationManager;
-
 
 
 public class GooglePageComponent extends LoadableComponent<GooglePageComponent> {
 	
 	private WebDriver driver = WebptATFHandler.getInstance().getWebAutomation().getWebDriver();
+	private Config config;
+
 	private final String GOOGLESEARCHFIELD_ID = "lst-ib";
 	private final String GOOGLESEARCHBTN_CSS = ".jsb input[name='btnK']";
 	private final String GOOGLEMAPSTAB_CSS = "#rso a:nth-of-type(" + 1 + ")";
@@ -34,6 +35,10 @@ public class GooglePageComponent extends LoadableComponent<GooglePageComponent> 
 	@FindBy(id ="rcnt")
 	private WebElement searchResults;
 
+	public GooglePageComponent() {
+		this.config = new Config();
+	}
+
 	@Override
 	protected void load() {
 		// TODO Auto-generated method stub
@@ -44,7 +49,7 @@ public class GooglePageComponent extends LoadableComponent<GooglePageComponent> 
 			e.printStackTrace();
 		}
 		
-		driver.get(WebptConfigurationManager.getInstance().getGoogleUrl());
+		driver.get(config.getGoogleUrl());
 	}
 
 	@Override

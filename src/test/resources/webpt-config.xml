@@ -2,8 +2,11 @@
 <!-- test-config.xml -->
 <!-- Used for configuration of test environment -->
 <configuration>
+    <env />
     <system />
-    <xml fileName="webpt-test-environment.xml" />
+    <properties fileName="${ENV_FILE}" config-optional="true"/>
+    <properties fileName="application.properties"/>
+    <xml fileName="web-driver-config.xml" />
 </configuration>
 
 

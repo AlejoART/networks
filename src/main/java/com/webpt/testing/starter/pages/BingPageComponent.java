@@ -2,6 +2,7 @@ package com.webpt.testing.starter.pages;
 
 import static org.testng.AssertJUnit.assertTrue;
 
+import com.webpt.testing.starter.config.Config;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,10 +13,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.webpt.testing.atf.WebptATFHandler;
-import com.webpt.testing.atf.config2.WebptConfigurationManager;
 
 public class BingPageComponent extends LoadableComponent<BingPageComponent> {
 	private WebDriver driver = WebptATFHandler.getInstance().getWebAutomation().getWebDriver();
+	private Config config;
 
 	private final String BINGSEARCHFIELD_CLASS = "b_searchbox";
 	private final String BINGSEARCHBTN_CLASS = "b_searchboxSubmit";
@@ -33,6 +34,10 @@ public class BingPageComponent extends LoadableComponent<BingPageComponent> {
 	@FindBy(id ="b_content")
 	private WebElement searchResults;
 
+	public BingPageComponent() {
+		this.config = new Config();
+	}
+
 	protected void load() {
 		// TODO Auto-generated method stub
 		try {
@@ -42,7 +47,7 @@ public class BingPageComponent extends LoadableComponent<BingPageComponent> {
 			e.printStackTrace();
 		}
 
-		driver.get(WebptConfigurationManager.getInstance().getBingUrl());
+		driver.get(config.getBingUrl());
 	}
 
 	@Override

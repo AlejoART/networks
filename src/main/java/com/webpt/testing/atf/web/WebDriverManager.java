@@ -1,7 +1,6 @@
 package com.webpt.testing.atf.web;
 
-import com.webpt.testing.atf.config.Config;
-import com.webpt.testing.atf.config.ConfigFactory;
+import com.webpt.testing.atf.config.WebDriverConfiguration;
 import com.webpt.testing.atf.web.drivers.ChromeDriverFactory;
 import com.webpt.testing.atf.web.drivers.FirefoxDriverFactory;
 import org.apache.commons.lang.StringUtils;
@@ -26,11 +25,11 @@ public class WebDriverManager {
 
 	private ChromeDriverFactory chromeDriverFactory;
 	private FirefoxDriverFactory firefoxDriverFactory;
-	private Config config;
+	private WebDriverConfiguration config;
 
 	public WebDriverManager() {
 		log.info("Initializing the WebDriverManager.");
-		this.config = ConfigFactory.getConfig();
+		this.config = new WebDriverConfiguration();
 		this.chromeDriverFactory = new ChromeDriverFactory(config);
 		this.firefoxDriverFactory = new FirefoxDriverFactory(config);
 	}
@@ -60,7 +59,7 @@ public class WebDriverManager {
 	 */
 	private WebDriver webDriverSetup(){
 
-		String browserName = config.getWebdriverDriver();
+		String browserName = config.getWebBrowserName();
 
 		// Set defaults if not configured
 		if (StringUtils.isBlank(browserName)) {
@@ -68,7 +67,7 @@ public class WebDriverManager {
 		}
 
         WebDriver driver;
-		if(config.isRemoteDriver()){
+		if(config.getUseGrid()){
 			driver = getRemoteDriver(browserName);
 		}else{
 			driver = getLocalDriver(browserName);
@@ -90,7 +89,7 @@ public class WebDriverManager {
 
 		URL gridUrl;
 		try {
-			gridUrl = new URL (config.getWebdriverRemoteUrl());
+			gridUrl = new URL (config.getGridUrl());
 		} catch (MalformedURLException e) {
 			throw new RuntimeException("Unable to create grid URL to create remote web driver.", e);
 		}

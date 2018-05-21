@@ -1,6 +1,6 @@
 package com.webpt.testing.atf;
 
-import com.webpt.testing.atf.config2.WebptConfigurationManager;
+import com.webpt.testing.atf.config.WebDriverConfiguration;
 import net.jsourcerer.webdriver.jserrorcollector.JavaScriptError;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
@@ -84,7 +84,8 @@ public class WebptATFHandler
 			{
 				// Log the js error collected if this reporting is on and we
 				// were using a firefox driver
-				if (webAutomationInstance.getWebDriver() instanceof FirefoxDriver && WebptConfigurationManager.getInstance().getWebUseJSErrorCollectorWithFirefox())
+				WebDriverConfiguration config = new WebDriverConfiguration();
+				if (webAutomationInstance.getWebDriver() instanceof FirefoxDriver && config.getWebUseJSErrorCollectorWithFirefox())
 				{
 					List<JavaScriptError> jsErrors = JavaScriptError.readErrors(webAutomationInstance.getWebDriver());
 					for (JavaScriptError jsErr : jsErrors)
