@@ -1,0 +1,10 @@
+import com.webpt.testing.starter.runners.BaseRunner;
+import cucumber.api.CucumberOptions;
+
+@CucumberOptions(
+    features = {"$featureFile"},
+    plugin = {$reports}
+)
+
+public class $className extends BaseRunner{
+}

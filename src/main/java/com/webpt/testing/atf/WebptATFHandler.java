@@ -1,12 +1,13 @@
 package com.webpt.testing.atf;
 
+import com.webpt.testing.atf.config.WebDriverConfiguration;
 import net.jsourcerer.webdriver.jserrorcollector.JavaScriptError;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//import com.webpt.testing.atf.managers.*;
-import com.webpt.testing.atf.managers.*;
+//import com.webpt.testing.atf.web.*;
+import com.webpt.testing.atf.web.*;
 
 import java.util.List;
 
@@ -46,23 +47,23 @@ public class WebptATFHandler
 		return webptHandlerInstance;
 	}
 
-	private volatile WebptWebAutomationManager webAutomationInstance;
+	private volatile WebDriverManager webAutomationInstance;
 
 	/**
 	 * getWebAutomation Used to perform web automation tasks
 	 */
-	public WebptWebAutomationManager getWebAutomation()
+	public WebDriverManager getWebAutomation()
 	{
 		if (webAutomationInstance == null)
 		{
-			synchronized (WebptWebAutomationManager.class)
+			synchronized (WebDriverManager.class)
 			{
-				WebptWebAutomationManager inst = webAutomationInstance;
+				WebDriverManager inst = webAutomationInstance;
 				if (inst == null)
 				{
-					synchronized (WebptWebAutomationManager.class)
+					synchronized (WebDriverManager.class)
 					{
-						webAutomationInstance = new WebptWebAutomationManager();
+						webAutomationInstance = new WebDriverManager();
 						log.info("Created new instance of the Web Automation Manager.");
 					}
 				}
@@ -83,7 +84,8 @@ public class WebptATFHandler
 			{
 				// Log the js error collected if this reporting is on and we
 				// were using a firefox driver
-				if (webAutomationInstance.getWebDriver() instanceof FirefoxDriver && WebptConfigurationManager.getInstance().getWebUseJSErrorCollectorWithFirefox())
+				WebDriverConfiguration config = new WebDriverConfiguration();
+				if (webAutomationInstance.getWebDriver() instanceof FirefoxDriver && config.getWebUseJSErrorCollectorWithFirefox())
 				{
 					List<JavaScriptError> jsErrors = JavaScriptError.readErrors(webAutomationInstance.getWebDriver());
 					for (JavaScriptError jsErr : jsErrors)
@@ -91,9 +93,10 @@ public class WebptATFHandler
 						log.error("JSErrorCollected: Line: " + jsErr.getLineNumber() + " Source: " + jsErr.getSourceName() + " Error: " + jsErr.getErrorMessage());
 					}
 				}
+				webAutomationInstance.teardown();
 			}
 
-			webAutomationInstance.teardown();
+
 			//webAutomationInstance = null; do not remove this object, we should reuse the existing one between tests because the webDrivers are managed by thread
 		}
         if (webAutomationInstance != null) {

@@ -11,6 +11,7 @@ public class PageComponentFactory {
 	}
 	public static LoadableComponent getPageObject(Object cls) {
 		LoadableComponent instance = (LoadableComponent) cls;
+
 		return PageFactory.initElements(WebptATFHandler.getInstance().getWebAutomation().getWebDriver(), instance.getClass());
 	}
 }
