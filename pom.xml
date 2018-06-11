@@ -139,11 +139,11 @@
 			<artifactId>cucumber-runner</artifactId>
 			<version>1.0.8</version>
 		</dependency>
-        <dependency>
+      <!--  <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
             <version>3.16.0</version>
-        </dependency>
+        </dependency> -->
 
 	</dependencies>
 	<build>
