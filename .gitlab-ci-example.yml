@@ -2,7 +2,7 @@ stages:
   - build
   - test
   - snapshot
-  - release
+  - release:clean
 mvn:install:
   image: maven:latest
   stage: test
