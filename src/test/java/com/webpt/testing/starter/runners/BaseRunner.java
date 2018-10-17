@@ -29,19 +29,20 @@ public class BaseRunner {
     public Object[][] scenarios() {
         return testNGCucumberRunner.provideScenarios();
     }
-
+   
     @AfterMethod
     public void screenShot(ITestResult result){
         if(ITestResult.FAILURE==result.getStatus()){
             ScreenShot screenShot = new ScreenShot();
             screenShot.capture(result.getInstanceName() + "_" + ITestResult.FAILURE);
         }
-        WebptATFHandler.getInstance().teardown();
+        
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDownClass() throws Exception {
         testNGCucumberRunner.finish();
+        WebptATFHandler.getInstance().teardown();
     }
 
 }

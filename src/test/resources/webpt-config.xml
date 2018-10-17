@@ -6,7 +6,8 @@
     <system />
     <properties fileName="${ENV_FILE}" config-optional="true"/>
     <properties fileName="application.properties"/>
-    <xml fileName="web-driver-config.xml" />
+    <properties fileName="compose.properties"/>
+    <!-- <xml fileName="web-driver-config.xml" /> -->
 </configuration>
 
 

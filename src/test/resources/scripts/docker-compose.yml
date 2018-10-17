@@ -1,0 +1,31 @@
+version: "3"
+services:
+  selenium-hub:
+    image: selenium/hub:3.14.0-arsenic
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+
+  chrome:
+    image: selenium/node-chrome-debug:3.14.0-arsenic
+    ports:
+      - "5904:5900"
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+    shm_size: 2g
+
+  nameofcontainer:
+    image: #latest image from CI/CD
+    environment:
+      - ENV_FILE=compose.properties
+      - MAVEN_ARGS=-X
+    depends_on:
+      - selenium-hub
+      - chrome
+    shm_size: 2g
+    volumes:
+      - ${OUTPUT_DIR}/cucumber:/cucumber
+      
