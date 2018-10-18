@@ -1,13 +1,6 @@
 package com.webpt.testing.starter.step.definition.bing;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import org.apache.commons.io.IOUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import com.webpt.testing.atf.WebptATFHandler;
 import com.webpt.testing.atf.page.PageComponentFactory;
 import com.webpt.testing.starter.cucmber.picocontainer.CucumberHooks;
 import com.webpt.testing.starter.pages.BingPageComponent;
