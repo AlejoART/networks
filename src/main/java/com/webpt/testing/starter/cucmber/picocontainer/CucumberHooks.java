@@ -13,7 +13,7 @@ import com.webpt.testing.atf.WebptATFHandler;
 
 public class CucumberHooks {
 	@After
-    public static void hooksScreenShotsInReports(Scenario result) throws IOException {
+    public static void embedFailureScreenShotsInReports(Scenario result) throws IOException {
          if(result.isFailed()) {
 			File screenshot = ((TakesScreenshot) WebptATFHandler.getInstance().getWebAutomation().getWebDriver()).getScreenshotAs(OutputType.FILE);
 			InputStream screenshotStream = new FileInputStream(screenshot);

@@ -41,8 +41,8 @@ public class BingSteps {
     }
    
     @After
-    public void screenshots(Scenario result) throws IOException {
-    	CucumberHooks.hooksScreenShotsInReports(result);
+    public void failureScreenshots(Scenario result) throws IOException {
+    	CucumberHooks.embedFailureScreenShotsInReports(result);
     }
    
 
