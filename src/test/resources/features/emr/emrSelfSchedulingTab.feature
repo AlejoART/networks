@@ -21,7 +21,7 @@
       Then I view the the other hidden fields
 
     @emrSScustomizeDefaultTimes
-    Scenario: From monday to sunday default times should be from 7am - 6pm and unavailable only saturday and sunday
+    Scenario: From monday to sunday default times should be from 7am - 6pm
       And I select a calendar
       And I select Customize in the Scheduling Availability section
       Then I view the default availability times for the week

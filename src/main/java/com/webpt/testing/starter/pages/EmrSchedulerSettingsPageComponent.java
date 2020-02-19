@@ -53,55 +53,87 @@ public class EmrSchedulerSettingsPageComponent extends LoadableComponent<EmrSche
 
     @FindBy(id = "monday-sod")
     private WebElement mondaySOD;
+    @FindBy(css = "#monday-sod + .x-form-arrow-trigger")
+    private WebElement mondaySODdrop;
     @FindBy(id = "monday-eod")
     private WebElement mondayEOD;
+    @FindBy(css = "#monday-eod + .x-form-arrow-trigger")
+    private WebElement mondayEODdrop;
     @FindBy(id = "Self-Scheduling-Week-Checkbox-monday")
     private WebElement mondayAvailability;
 
     @FindBy(id = "tuesday-sod")
     private WebElement tuesdaySOD;
+    @FindBy(css = "#tuesday-sod + .x-form-arrow-trigger")
+    private WebElement tuesdaySODdrop;
     @FindBy(id = "tuesday-eod")
     private WebElement tuesdayEOD;
+    @FindBy(css = "#tuesday-eod + .x-form-arrow-trigger")
+    private WebElement tuesdayEODdrop;
     @FindBy(id = "Self-Scheduling-Week-Checkbox-tuesday")
     private WebElement tuesdayAvailability;
 
     @FindBy(id = "wednesday-sod")
     private WebElement wednesdaySOD;
+    @FindBy(css = "#wednesday-sod + .x-form-arrow-trigger")
+    private WebElement wednesdaySODdrop;
     @FindBy(id = "wednesday-eod")
     private WebElement wednesdayEOD;
+    @FindBy(css = "#wednesday-eod + .x-form-arrow-trigger")
+    private WebElement wednesdayEODdrop;
     @FindBy(id = "Self-Scheduling-Week-Checkbox-wednesday")
     private WebElement wednesdayAvailability;
 
     @FindBy(id = "thursday-sod")
     private WebElement thursdaySOD;
+    @FindBy(css = "#thursday-sod + .x-form-arrow-trigger")
+    private WebElement thursdaySODdrop;
     @FindBy(id = "thursday-eod")
     private WebElement thursdayEOD;
+    @FindBy(css = "#thursday-eod + .x-form-arrow-trigger")
+    private WebElement thursdayEODdrop;
     @FindBy(id = "Self-Scheduling-Week-Checkbox-thursday")
     private WebElement thursdayAvailability;
 
     @FindBy(id = "friday-sod")
     private WebElement fridaySOD;
+    @FindBy(css = "#friday-sod + .x-form-arrow-trigger")
+    private WebElement fridaySODdrop;
     @FindBy(id = "friday-eod")
     private WebElement fridayEOD;
+    @FindBy(css = "#friday-eod + .x-form-arrow-trigger")
+    private WebElement fridayEODdrop;
     @FindBy(id = "Self-Scheduling-Week-Checkbox-friday")
     private WebElement fridayAvailability;
 
     @FindBy(id = "saturday-sod")
     private WebElement saturdaySOD;
+    @FindBy(css = "#saturday-sod + .x-form-arrow-trigger")
+    private WebElement saturdaySODdrop;
     @FindBy(id = "saturday-eod")
     private WebElement saturdayEOD;
+    @FindBy(css = "#saturday-eod + .x-form-arrow-trigger")
+    private WebElement saturdayEODdrop;
     @FindBy(id = "Self-Scheduling-Week-Checkbox-saturday")
     private WebElement saturdayAvailability;
 
     @FindBy(id = "sunday-sod")
     private WebElement sundaySOD;
+    @FindBy(css = "#sunday-sod + .x-form-arrow-trigger")
+    private WebElement sundaySODdrop;
     @FindBy(id = "sunday-eod")
     private WebElement sundayEOD;
+    @FindBy(css = "#sunday-eod + .x-form-arrow-trigger")
+    private WebElement sundayEODdrop;
     @FindBy(id = "Self-Scheduling-Week-Checkbox-sunday")
     private WebElement sundayAvailability;
 
     @FindBy(css = "#Scheduling-Settings-Value + .x-form-arrow-trigger")
     private WebElement schedSettingsDropdown;
+    @FindBy(css = ".x-layer .x-combo-selected")
+    private List<WebElement> schedSettingsSelected;
+    @FindBy(css = ".x-layer .x-combo-selected + .x-combo-list-item")
+    private List<WebElement> schedSettingsToSelect;
 
     private WebDriverWait wait = new WebDriverWait(driver, 15);
 
@@ -116,7 +148,6 @@ public class EmrSchedulerSettingsPageComponent extends LoadableComponent<EmrSche
     public void goToSelfSchedTab(){
         try {
             selfSchedTab.click();
-            //Thread.sleep(2000);
         }catch(Exception e) {
             Assert.fail("failed due to:  " + e.getMessage());
         }
@@ -146,7 +177,7 @@ public class EmrSchedulerSettingsPageComponent extends LoadableComponent<EmrSche
             //javascript.executeScript("document.getElementById('ext-gen350').click();");
             calDropdNextBtn.click();
             //wait.until(ExpectedConditions.visibilityOf(comboList));
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         }
     }
 
@@ -155,20 +186,71 @@ public class EmrSchedulerSettingsPageComponent extends LoadableComponent<EmrSche
     }
 
     public void clickOnCustomize(){
-        if (schedSettings.getText().equals("Use location settings")){
-            schedSettingsDropdown.click();
+        schedSettingsDropdown.click();
+        String selectedOption = schedSettingsSelected.get(1).getText();
+        if (selectedOption.equals("Use location settings")){
+            schedSettingsToSelect.get(0).click();
         }
     }
 
     public Boolean defaultTimesAreOk(){
         String sod = "7am";
         String eod = "6pm";
-        return (mondaySOD.getText().equals(sod) && mondayEOD.getText().equals(eod) && !mondayAvailability.isSelected()
-                && tuesdaySOD.getText().equals(sod) && tuesdayEOD.getText().equals(eod) && !tuesdayAvailability.isSelected()
-                    && wednesdaySOD.getText().equals(sod) && wednesdayEOD.getText().equals(eod) && !wednesdayAvailability.isSelected()
-                        && thursdaySOD.getText().equals(sod) && thursdayEOD.getText().equals(eod) && !thursdayAvailability.isSelected()
-                            && fridayAvailability.getText().equals(sod) && fridayAvailability.getText().equals(eod) && !fridayAvailability.isSelected()
-                                && saturdaySOD.getText().equals(sod) && saturdayEOD.getText().equals(eod) && saturdayAvailability.isSelected()
-                                    && sundaySOD.getText().equals(sod) && sundayEOD.getText().equals(eod) && sundayAvailability.isSelected());
+        boolean monSODFlag, monEODFlag, monFlag, tueSODFlag, tueEODFlag, tueFlag, wedSODFlag, wedEODFlag, wedFlag, thuSODFlag, thuEODFlag, thuFlag, friSODFlag, friEODFlag, friFlag, satSODFlag, satEODFlag, satFlag, sunSODFlag, sunEODFlag, sunFlag;
+
+        mondaySODdrop.click();
+        monSODFlag = schedSettingsSelected.get(2).getText().equals(sod);
+        mondayEODdrop.click();
+        monEODFlag = schedSettingsSelected.get(3).getText().equals(eod);
+        monFlag = (monSODFlag && monEODFlag);
+
+        tuesdaySODdrop.click();
+        tueSODFlag = schedSettingsSelected.get(4).getText().equals(sod);
+        tuesdayEODdrop.click();
+        tueEODFlag = schedSettingsSelected.get(5).getText().equals(eod);
+        tueFlag = (tueSODFlag && tueEODFlag);
+
+        wednesdaySODdrop.click();
+        wedSODFlag = schedSettingsSelected.get(6).getText().equals(sod);
+        wednesdayEODdrop.click();
+        wedEODFlag = schedSettingsSelected.get(7).getText().equals(eod);
+        wedFlag = (wedSODFlag && wedEODFlag);
+
+        thursdaySODdrop.click();
+        thuSODFlag = schedSettingsSelected.get(8).getText().equals(sod);
+        thursdayEODdrop.click();
+        thuEODFlag = schedSettingsSelected.get(9).getText().equals(eod);
+        thuFlag = (thuSODFlag && thuEODFlag);
+
+        fridaySODdrop.click();
+        friSODFlag = schedSettingsSelected.get(10).getText().equals(sod);
+        fridayEODdrop.click();
+        friEODFlag = schedSettingsSelected.get(11).getText().equals(eod);
+        friFlag = (friSODFlag && friEODFlag);
+
+
+        try {
+            saturdayAvailability.click();
+        }catch (Exception e){
+            Assert.fail("failed due to:  " + e.getMessage());
+        }
+        saturdaySODdrop.click();
+        satSODFlag = schedSettingsSelected.get(12).getText().equals(sod);
+        saturdayEODdrop.click();
+        satEODFlag = schedSettingsSelected.get(13).getText().equals(eod);
+        satFlag = (satSODFlag && satEODFlag);
+
+        try {
+            sundayAvailability.click();
+        }catch (Exception e){
+            Assert.fail("failed due to:  " + e.getMessage());
+        }
+        sundaySODdrop.click();
+        sunSODFlag = schedSettingsSelected.get(14).getText().equals(sod);
+        sundayEODdrop.click();
+        sunEODFlag = schedSettingsSelected.get(15).getText().equals(eod);
+        sunFlag = (sunSODFlag && sunEODFlag);
+
+        return monFlag && tueFlag && wedFlag && thuFlag && friFlag && satFlag && sunFlag;
     }
 }
