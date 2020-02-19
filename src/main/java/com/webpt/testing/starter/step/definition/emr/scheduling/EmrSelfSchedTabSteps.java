@@ -46,7 +46,7 @@ public class EmrSelfSchedTabSteps {
 
     @And("I select Customize in the Scheduling Availability section")
     public void iSelectCustomizeInTheSchedulingAvailabilitySection() {
-
+        emrSchedulerSettingsPageComponent.clickOnCustomize();
     }
 
     @Then("I view the default availability times for the week")

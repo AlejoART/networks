@@ -21,9 +21,6 @@ public class EmrDashboardComponent extends LoadableComponent<EmrDashboardCompone
     @FindBy(css = ".base-default-lightbox-outer")
     private WebElement popUp;
 
-    @FindBy(id = "ext-comp-1006")
-    private WebElement ignoreBtn;
-
     @FindBy(css = ".base-default-lightbox-outer .base-default-tool-close-image")
     private WebElement closePop;
 
