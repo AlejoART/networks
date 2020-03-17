@@ -2,10 +2,8 @@ package com.webpt.testing.starter.pages;
 
 import com.webpt.testing.atf.WebptATFHandler;
 import com.webpt.testing.starter.config.Config;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import jdk.jfr.Timespan;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,6 +21,9 @@ public class EmrSchedulerSettingsPageComponent extends LoadableComponent<EmrSche
 
     @FindBy(id = "SCHED_innertabcontainer__Scheduling")
     private WebElement selfSchedTab;
+
+    @FindBy(id = "SCHED_innertabcontainer__Permissions")
+    private WebElement calSettingsTab;
 
     @FindBy(id = "Scheduling-Calendar-Combobox")
     private WebElement calSelectField;
@@ -47,6 +48,9 @@ public class EmrSchedulerSettingsPageComponent extends LoadableComponent<EmrSche
 
     @FindBy(id = "Scheduling-Therapist-Value")
     private WebElement schedTherapist;
+
+    @FindBy(css = "#Scheduling-Therapist-Value + .x-form-trigger.x-form-arrow-trigger")
+    private WebElement therapistDropdown;
 
     @FindBy(id = "Scheduling-Settings-Value")
     private WebElement schedSettings;
@@ -135,6 +139,23 @@ public class EmrSchedulerSettingsPageComponent extends LoadableComponent<EmrSche
     @FindBy(css = ".x-layer .x-combo-selected + .x-combo-list-item")
     private List<WebElement> schedSettingsToSelect;
 
+    @FindBy(css = "#Calendar-Selection .base-default-combobox")
+    private WebElement calSelectionCalendarTab;
+
+    @FindBy(css = "input[name='Cal_Status']")
+    private WebElement calStatus;
+
+    @FindBy(id = "SCHED_grid_permissions")
+    private WebElement wholeGrid;
+    @FindBy(css = "#SCHED_grid_permissions .x-grid3-body")
+    private WebElement usersGrid;
+
+    @FindBy(id = "Schedule-Save-Button")
+    private WebElement saveBtn;
+
+    @FindBy(css = ".base-default-lightbox-inner-body")
+    private WebElement warningPopUpMessage;
+
     private WebDriverWait wait = new WebDriverWait(driver, 15);
 
     @Override
@@ -160,8 +181,6 @@ public class EmrSchedulerSettingsPageComponent extends LoadableComponent<EmrSche
     public void selectOneCalendar(String calName) throws InterruptedException {
         listDropd.click();
         Thread.sleep(2000);
-//        comboList = driver.findElement(By.id("ext-gen315"));
-//        wait.until(ExpectedConditions.visibilityOf(comboList));
         List<WebElement> currentCalendars;
         int totalCalPages = Integer.parseInt(calPagesTotal.getText().replace("of ",""));
         calendarPages:
@@ -174,9 +193,7 @@ public class EmrSchedulerSettingsPageComponent extends LoadableComponent<EmrSche
                     break calendarPages;
                 }
             }
-            //javascript.executeScript("document.getElementById('ext-gen350').click();");
             calDropdNextBtn.click();
-            //wait.until(ExpectedConditions.visibilityOf(comboList));
             Thread.sleep(3000);
         }
     }
@@ -253,4 +270,60 @@ public class EmrSchedulerSettingsPageComponent extends LoadableComponent<EmrSche
 
         return monFlag && tueFlag && wedFlag && thuFlag && friFlag && satFlag && sunFlag;
     }
+
+    public void typeCalendarName(String calName, WebElement element) throws InterruptedException {
+        element.sendKeys(calName);
+        Thread.sleep(3000);
+        element.sendKeys(Keys.ENTER);
+    }
+
+    public void selectAnotherTherapist(String therapistName) throws InterruptedException {
+        wait.until(ExpectedConditions.elementToBeClickable(schedTherapist));
+        schedTherapist.clear();
+        schedTherapist.sendKeys(therapistName);
+        Thread.sleep(2000);
+        schedTherapist.sendKeys(Keys.ENTER);
+        Thread.sleep(2000);
+    }
+
+    public void save(){
+        saveBtn.click();
+        wait.until(ExpectedConditions.visibilityOf(warningPopUpMessage));
+    }
+
+    public Boolean correctWarningMessage(){
+        return warningPopUpMessage.getText().equals("This calendar therapist has already setup a self scheduling calendar. Please select a different calendar therapist for this calendar selection.");
+    }
+
+    public void goToCalSettingsTab(){
+        try {
+            calSettingsTab.click();
+            wait.until(ExpectedConditions.visibilityOf(wholeGrid));
+        }catch(Exception e) {
+            Assert.fail("failed due to:  " + e.getMessage());
+        }
+    }
+
+    public Boolean calIsActive(){
+        wait.until(ExpectedConditions.visibilityOf(usersGrid));
+        return calStatus.isSelected();
+    }
+
+    public Boolean calIsDisplayed(){
+        try{
+            return true;
+        }catch (Exception e){
+            Assert.fail("failed due to:  " + e.getMessage());
+            return false;
+        }
+    }
+
+    public WebElement getCalSelectField() {
+        return calSelectField;
+    }
+
+    public WebElement getCalSelectionCalendarTab() {
+        return calSelectionCalendarTab;
+    }
 }
+

@@ -53,4 +53,45 @@ public class EmrSelfSchedTabSteps {
     public void iViewTheDefaultAvailabilityTimesForTheWeek() {
         Assert.assertTrue(emrSchedulerSettingsPageComponent.defaultTimesAreOk());
     }
+
+    @And("I type a calendar name '(.*)'")
+    public void iTypeACalendarName(String calName) throws InterruptedException {
+        emrSchedulerSettingsPageComponent.typeCalendarName(calName, emrSchedulerSettingsPageComponent.getCalSelectField());
+    }
+
+    @And("I select another therapist")
+    public void iSelectAnotherTherapist() throws InterruptedException {
+        emrSchedulerSettingsPageComponent.selectAnotherTherapist("Alan Mazur");
+    }
+
+    @And("I click on save button")
+    public void iClickOnSaveButton() {
+        emrSchedulerSettingsPageComponent.save();
+    }
+
+    @Then("I view the warning message")
+    public void iViewTheWarningMessage() {
+        Assert.assertTrue(emrSchedulerSettingsPageComponent.correctWarningMessage());
+    }
+
+    @And("I click on Calendar Settings and User permission tab")
+    public void iClickOnCalendarSettingsAndUserPermissionTab() {
+        emrSchedulerSettingsPageComponent.goToCalSettingsTab();
+    }
+
+    @And("I type a calendar name in calendar settings tab '(.*)'")
+    public void iTypeACalendarNameInCalendarSettingsTab(String calName) throws InterruptedException {
+        emrSchedulerSettingsPageComponent.typeCalendarName(calName, emrSchedulerSettingsPageComponent.getCalSelectionCalendarTab());
+    }
+
+    @And("I view that the calendar is active")
+    public void iViewThatTheCalendarIsActive() {
+        Assert.assertTrue(emrSchedulerSettingsPageComponent.calIsActive());
+    }
+
+    @Then("I view that the calendar is displayed")
+    public void iViewThatTheCalendarIsDisplayed() {
+        Assert.assertTrue(emrSchedulerSettingsPageComponent.calIsDisplayed());
+    }
+
 }
