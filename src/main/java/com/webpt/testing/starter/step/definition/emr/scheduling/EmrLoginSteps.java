@@ -19,7 +19,7 @@ public class EmrLoginSteps {
         emrLoginPageComponent.get();
     }
 
-    @When("I enter username '(.*)")
+    @When("I enter username '(.*)'")
     public void i_enter_username(String user) {
         // Write code here that turns the phrase above into concrete actions
         emrLoginPageComponent.enterUserName(user);
