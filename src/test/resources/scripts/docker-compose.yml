@@ -9,7 +9,7 @@ services:
   chrome:
     image: selenium/node-chrome-debug:3.14.0-arsenic
     ports:
-      - "5904:5900"
+      - "6905:5900"
     depends_on:
       - selenium-hub
     environment:
@@ -17,8 +17,8 @@ services:
       - HUB_PORT=4444
     shm_size: 2g
 
-  nameofcontainer:
-    image: #latest image from CI/CD
+  net-e2e:
+    image: docker.webpt.com/aramirez/networks-automation:latest
     environment:
       - ENV_FILE=compose.properties
       - MAVEN_ARGS=-X
