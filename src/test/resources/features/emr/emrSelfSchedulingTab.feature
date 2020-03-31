@@ -4,9 +4,8 @@
     Background: User should be logged in
       Given I navigate to emr login page
       When I enter username 'alejandroalejandro'
-      When I enter password 'alejandro$2020'
+      When I enter password 'alejo$2020'
       And I click on login button
-      Then I view the emr dashboard page
       And I click on view schedule link
       And I click on manage calendars link
 

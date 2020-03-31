@@ -24,23 +24,6 @@ public class EmrAlreadyLoggedComponent extends LoadableComponent<EmrAlreadyLogge
     @FindBy(className="ok")
     private WebElement oustButton;
 
-    /*public String getPageUrl() {
-        return config.getEmrAppUrl() + "/oust";
-    }
-    public boolean isCurrentPage() {
-        List<WebElement> elements = driver.findElements(By.className("eviction-option"));
-        return elements.size() > 0;
-    }
-    public void oust() {
-        wait.until(ExpectedConditions.elementToBeClickable(oustButton));
-        oustButton.click();
-        wait.until(ExpectedConditions.numberOfElementsToBe(By.className("eviction-option"), 0));
-    }
-    public void clickIgnoreBtn() {
-        wait.until(ExpectedConditions.elementToBeClickable(ignoreBtn));
-        ignoreBtn.click();
-    }*/
-
     public EmrAlreadyLoggedComponent() {
         this.config = new Config();
     }
@@ -54,21 +37,12 @@ public class EmrAlreadyLoggedComponent extends LoadableComponent<EmrAlreadyLogge
     }
 
     public void closeOpenedSession() {
-        if (oustButton.isDisplayed()){
+        if (oustButton.isDisplayed()) {
             oustButton.click();
-//            try {
-//                oustButton.click();
-//            } catch (TimeoutException e) {
-//                System.out.println("IGNORING TIMEOUT");
-//            }
         }
-//        else {
-//            try { }
-//            catch (TimeoutException e) {
-//                System.out.println("IGNORING TIMEOUT");
-//            }
-//        }
     }
 
-
+    public WebElement getOustButton() {
+        return oustButton;
+    }
 }
