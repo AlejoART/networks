@@ -40,8 +40,7 @@ public class EmrDashboardComponent extends LoadableComponent<EmrDashboardCompone
 
     public void isDashboardDisplayed() {
         WebDriverWait ewait = new WebDriverWait(driver, 15);
-        ewait.until(ExpectedConditions.visibilityOf(popUp));
-        closePop.click();
+        ewait.until(ExpectedConditions.visibilityOf(panelHeader));
         Assert.assertTrue(panelHeader.isDisplayed());
     }
 
@@ -52,5 +51,13 @@ public class EmrDashboardComponent extends LoadableComponent<EmrDashboardCompone
         }catch(Exception e) {
             Assert.fail("failed due to:  " + e.getMessage());
         }
+    }
+
+    public WebElement getPopUp() {
+        return popUp;
+    }
+
+    public WebElement getClosePop() {
+        return closePop;
     }
 }

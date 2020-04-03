@@ -27,6 +27,8 @@ public class EmrLoginPageComponent extends LoadableComponent<EmrLoginPageCompone
     @FindBy(id = "login-button")
     private WebElement loginButton;
 
+    private WebDriverWait wait = new WebDriverWait(driver, 15);
+
     public EmrLoginPageComponent() {
         this.config = new Config();
     }
@@ -70,17 +72,32 @@ public class EmrLoginPageComponent extends LoadableComponent<EmrLoginPageCompone
     public void clickLoginBtn() {
         try {
             loginButton.click();
+            EmrDashboardComponent emrDashboardComponent = (EmrDashboardComponent) PageComponentFactory.getPageObject(new EmrDashboardComponent());
+            EmrAlreadyLoggedComponent emrAlreadyLoggedComponent = (EmrAlreadyLoggedComponent) PageComponentFactory.getPageObject(new EmrAlreadyLoggedComponent());
             try {
-                EmrAlreadyLoggedComponent emrAlreadyLoggedComponent = (EmrAlreadyLoggedComponent) PageComponentFactory.getPageObject(new EmrAlreadyLoggedComponent());
-                emrAlreadyLoggedComponent.closeOpenedSession();
-            }catch (TimeoutException e) {
-                System.out.println("IGNORING TIMEOUT");
-            	}
+                if (emrDashboardComponent.getPopUp().isDisplayed()){
+                    try {
+                        emrDashboardComponent.getClosePop().click();
+                    } catch (TimeoutException e) {
+                        System.out.println("IGNORING TIMEOUT");
+                    }
+                }
+            } catch (Exception e1){
+                if(emrAlreadyLoggedComponent.getOustButton().isDisplayed()){
+                    try {
+                        emrAlreadyLoggedComponent.closeOpenedSession();
+                        wait.until(ExpectedConditions.visibilityOf(emrDashboardComponent.getPopUp()));
+                        emrDashboardComponent.getClosePop().click();
+                    } catch (TimeoutException e2) {
+                        System.out.println("IGNORING TIMEOUT");
+                    }
+                }
+            }
 
-        }catch (TimeoutException e) {
-            System.out.println("IGNORING TIMEOUT");
-        }catch(Exception e) {
-            Assert.fail("failed due to: " + e.getMessage());}
+        } catch (Exception e) {
+                Assert.fail("failed due to: " + e.getMessage());
+            }
+        }
     }
 
-}
+
